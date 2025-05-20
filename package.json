@@ -1,0 +1,25 @@
+{
+  "name": "e-comerce-d-backend",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "e-comerce for \"Comercial Estefany\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Joaquin Orihuela",
+  "license": "MIT",
+  "keywords": [],
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
