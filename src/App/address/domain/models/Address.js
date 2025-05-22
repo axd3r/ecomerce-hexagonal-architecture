@@ -20,8 +20,18 @@ const Address = sequelize.define("Address", {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    city: {
-
+    department: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    province: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    district: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
-    
-})
+});
+
+export default Address

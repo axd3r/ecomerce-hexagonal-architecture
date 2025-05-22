@@ -4,7 +4,7 @@ import CreateProductDTO from "../DTO/createProductDTO.js";
 
 export default class CreateProductUseCase {
     constructor(productRepository = new ProductRepository()){
-        this.productRepository = productRepository
+        this.productRepository = productRepository;
     }
 
     async execute(createProductDTO = new CreateProductDTO) {
