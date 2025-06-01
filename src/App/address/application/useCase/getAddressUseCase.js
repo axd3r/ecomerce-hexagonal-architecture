@@ -1,5 +1,5 @@
-import { paginateAndSearch } from "../../../../common/utils/paginateAndSearch";
-import AddressRepository from "../../domain/repositories/addressRepository";
+import { paginateAndSearch } from "../../../../common/utils/paginateAndSearch.js";
+import AddressRepository from "../../domain/repositories/addressRepository.js";
 
 class GetAllAddressUseCase {
     constructor(addressRepository = new AddressRepository()) {

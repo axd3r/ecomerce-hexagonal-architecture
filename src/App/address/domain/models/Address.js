@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../../../../../sequelize.config";
-import User from "../../../users/domain/models/User";
+import sequelize from "../../../../../sequelize.config.js";
+import User from "../../../users/domain/models/User.js";
 
 const Address = sequelize.define("Address", {
     id: {
@@ -34,4 +34,4 @@ const Address = sequelize.define("Address", {
     }
 });
 
-export default Address
+export default Address;

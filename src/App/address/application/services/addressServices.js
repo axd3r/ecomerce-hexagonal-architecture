@@ -1,10 +1,10 @@
-import CreateAddressDTO from "../DTO/createAddressDTO";
-import UpdateAddressDTO from "../DTO/updateAddressDTO";
-import CreateAddressUseCase from "../useCase/createAddressUseCase";
-import DeleteAddressUseCase from "../useCase/deleteAddressUseCase";
-import GetAddressByIdUseCase from "../useCase/getAddressByIdUseCase";
-import GetAllAddressUseCase from "../useCase/getAddressUseCase";
-import UpdateAddressUseCase from "../useCase/upadteAddressUseCase";
+import CreateAddressDTO from "../DTO/createAddressDTO.js";
+import UpdateAddressDTO from "../DTO/updateAddressDTO.js";
+import CreateAddressUseCase from "../useCase/createAddressUseCase.js";
+import DeleteAddressUseCase from "../useCase/deleteAddressUseCase.js";
+import GetAddressByIdUseCase from "../useCase/getAddressByIdUseCase.js";
+import GetAllAddressUseCase from "../useCase/getAddressUseCase.js";
+import UpdateAddressUseCase from "../useCase/upadteAddressUseCase.js";
 
 class AddressServices {
     async create(createAddressDTO = new CreateAddressDTO()) {

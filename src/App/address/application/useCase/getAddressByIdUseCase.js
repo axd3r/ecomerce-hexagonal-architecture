@@ -1,4 +1,4 @@
-import AddressRepository from "../../domain/repositories/addressRepository";
+import AddressRepository from "../../domain/repositories/addressRepository.js";
 
 class GetAddressByIdUseCase {
     constructor(addressRepository = new AddressRepository()) {

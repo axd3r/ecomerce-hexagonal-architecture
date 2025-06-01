@@ -1,6 +1,6 @@
-import Address from "../../domain/models/Address";
-import AddressRepository from "../../domain/repositories/addressRepository";
-import UpdateAddressDTO from "../DTO/updateAddressDTO";
+import Address from "../../domain/models/Address.js";
+import AddressRepository from "../../domain/repositories/addressRepository.js";
+import UpdateAddressDTO from "../DTO/updateAddressDTO.js";
 
 class UpdateAddressUseCase {
     constructor(addressRepository = new AddressRepository) {
