@@ -2,58 +2,28 @@ import User from "../models/User.js";
 
 export default class UserRepository {
     async create(userData) {
-        try {
-            const user = await User.create(userData);
-            return user;
-        } catch ( error ) {
-            throw new Error("Error al crear el usuario repo: "+ error.message);
-        }
+        const user = await User.create(userData);
+        return user;
     }
 
-    async getAll() {
-        try {
-            const user = await User.findAll();
-            return user;
-        } catch ( error ) {
-            throw new Error("Error al obtener los usuarios: "+ error.message);
-        }
+    async getAll(options = {}) {
+        return await User.findAndCountAll(options);
     }
 
-    async getById(id) {
-        try {
-            const user = User.findByPk(id);
-            if(!user){
-                throw new Error("Usuario no encontrado");
-            }
-            return user;
-        } catch ( error ) {
-            throw new Error("Error al obtener el usuario: " + error.message);
-        }
+    async getById(userId) {
+        const user = await User.findByPk(userId);
+        return user;
     }
 
-    async update(id, userData) {
-        try {
-            const user = await this.getById(id);
-            if(!user){
-                throw new Error("Usuario no encontrado");
-            }
-            await user.update(userData);
-            return user;
-        } catch ( error ) {
-            throw new Error("Error al actualizar el usuario: " + error.message);
-        }
+    async update(userId, userData) {
+        const user = await this.getById(userId);
+        await user.update(userData);
+        return user;
     }
 
-    async delete(id) {
-        try {
-            const user = await this.getById(id);
-            if(!user){
-                throw new Error("Usuario no encontrado");
-            }
-            await user.destroy();
-            return {message: "Usuario Eliminado"};
-        } catch ( error ) {
-            throw new Error("Error al eliminar el usuario: " + error.message);
-        }
+    async delete(userId) {
+        const user = await this.getById(userId);
+        await user.destroy();
+        return {message: "Usuario Eliminado"};
     }
 }

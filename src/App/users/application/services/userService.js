@@ -1,59 +1,34 @@
-import UserRepository from "../../domain/repositories/userRepository.js";
-import UserCreateValidator from "../../infrastructure/validators/userCreateValidator.js";
-import UserDeleteValidator from "../../infrastructure/validators/userDeleteValidator.js";
-import UserGetByIdValidator from "../../infrastructure/validators/userGetByIdValidator.js";
-import UserUpdateValidator from "../../infrastructure/validators/userUpdateValidator.js";
+import CreateUserDTO from "../DTO/createUserDTO.js";
+import UpdateUserDTO from "../DTO/updateUserDTO.js";
+import CreateUserUseCase from "../useCase/createUserUseCase.js";
+import DeleteUserUseCase from "../useCase/deleteUserUseCase.js";
+import GetAllUserUseCase from "../useCase/getAllUserUseCase.js";
+import UpdateUserUseCase from "../useCase/updateUserUseCase.js";
+import GetUserByIdUseCase from "../useCase/getUserByIdUseCase.js";
 
 export default class UserService {
-    async create(userData) {
-        try {
-            UserCreateValidator.validateName(userData.name);
-            await UserCreateValidator.validateEmail(userData.email);
-            await UserCreateValidator.validateDocument(userData.document);
-            UserCreateValidator.validatePhone(userData.phone);
-
-            const user = await UserRepository.create(userData);
-            return user;
-        } catch (error) {
-            throw new Error("Error al crear el usuario service: " + error.message);
-        }
+    async create(createUserDTO = new CreateUserDTO()) {
+        const createUserUseCase = new CreateUserUseCase();
+        return createUserUseCase.execute(createUserDTO);
     }
 
     async getById(userId) {
-        try {
-            await UserGetByIdValidator.validateUserId(userId);
-
-            const user = await UserRepository.getById(userId);
-            return user;
-        } catch (error) {
-            throw new Error(error.message);
-        }
+        const getUserByIdUseCase = new GetUserByIdUseCase();
+        return getUserByIdUseCase.execute(userId);
     }
 
-    async update(userId, userData) {
-        try {
-            await UserUpdateValidator.validateUserId(userId);
+    async update(updateUserDTO = UpdateUserDTO()) {
+        const updateUserUseCase = new UpdateUserUseCase();
+        return updateUserUseCase.execute(updateUserDTO)
+    }
 
-            UserUpdateValidator.validateName(userData.name);
-            await UserUpdateValidator.validateEmail(userData.email, userId);
-            await UserUpdateValidator.validateDocument(userData.document, userId);
-            UserUpdateValidator.validatePhone(userData.phone);
-
-            const user = await UserRepository.update(userId, userData);
-            return user;
-        } catch (error) {
-            throw new Error(error.message);
-        }
+    async getAll(searchText = '', page = 1, paginate = 10) {
+        const getAllUserUseCase = new GetAllUserUseCase();
+        return getAllUserUseCase.execute(searchText, page, paginate);
     }
 
     async delete(userId) {
-        try {
-            await UserDeleteValidator.validateUserId(userId);
-
-            const user = await UserRepository.delete(userId);
-            return user;
-        } catch (error) {
-            throw new Error(error.message);
-        }
+        const deleteUserUseCase = new DeleteUserUseCase();
+        return deleteUserUseCase.execute(userId);
     }
 }

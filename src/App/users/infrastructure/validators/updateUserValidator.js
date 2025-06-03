@@ -1,7 +1,16 @@
 import { Op } from "sequelize";
 import User from "../../domain/models/User.js";
 
-export default class UserUpdateValidator {
+export default class UpdateUserValidator {
+    static async validate(data) {
+        this.validateName(data.name);
+        this.validateEmailFormat(data.email);
+        await this.validateEmail(data.email, data.userId);
+        await this.validateDocument(data.document, data.userId);
+        this.validatePhone(data.phone);
+        await this.validateUserId(data.userId);
+    }
+
     static validateName(name) {
         if(!name || name.length < 3) {
             throw new Error("El nombre debe terne almenos 3 caracteres");
@@ -16,7 +25,7 @@ export default class UserUpdateValidator {
     }
 
     static async validateEmail(email, userId) {
-        UserUpdateValidator.validateEmailFormat(email)
+        this.validateEmailFormat(email)
         const existengUser = await User.findOne({ where: { email, id: { [Op.ne]: userId } } });
         if(existengUser){
             throw new Error("El correo ya esta registrado");

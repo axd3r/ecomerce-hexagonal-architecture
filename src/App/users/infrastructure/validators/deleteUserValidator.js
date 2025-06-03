@@ -1,6 +1,9 @@
 import User from "../../domain/models/User.js";
 
-export default class UserDeleteValidator {
+export default class DeleteUserValidator {
+    static async validate(data) {
+      await this.validateUserId(data.userId);
+    }
     static async validateUserId(userId) {
         const user = await User.findByPk(userId);
         if (!user) {
