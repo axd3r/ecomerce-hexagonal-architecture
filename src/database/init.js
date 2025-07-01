@@ -3,6 +3,7 @@ import User from "../App/users/domain/models/User.js";
 import Role from "../App/role/domain/models/Role.js";
 import Product from "../App/products/domain/models/Products.js";
 import Category from "../App/category/domain/models/Category.js";
+import Review from "../App/reviews/domain/models/Reviews.js";
 //const { Product, Category } from ("../config/models/initRelations");
 
 const syncDatabase = async () => {
