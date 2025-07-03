@@ -7,6 +7,7 @@ import roleRoutes from "./App/role/infrastructure/routes/roleRoutes.js";
 import categoryRoutes from "./App/category/infrastructure/routes/categoryRoutes.js";
 import productRoutes from "./App/products/infrastructure/routes/productRoutes.js";
 import reviewRoutes from './App/reviews/infrastructure/routes/reviewRoutes.js';
+import orderRoutes from './App/order/order/infrastructure/routes/orderRoutes.js';
 
 const app = express();
 app.use(cors());
@@ -17,7 +18,8 @@ app.use('/api/address', addressRoutes)
 app.use("/api/roles", roleRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/product", productRoutes);
-app.use('/api/review', reviewRoutes)
+app.use('/api/review', reviewRoutes);
+app.use('/api/orders', orderRoutes);
 
 const PORT = process.env.PORT || 3000;
 
